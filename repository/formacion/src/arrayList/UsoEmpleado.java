@@ -44,17 +44,27 @@ public class UsoEmpleado {
 
 			switch (opcion) {
 			case 1:
-				listaEmpleados.add(new Empleado(Empleado.nombre, Empleado.edad, Empleado.salario));
+
+				Scanner teclado2 = new Scanner(System.in);
+				System.out.println("introduzca el nombre:");
+				String nombre = teclado2.nextLine();
+				System.out.println("Introduzca la edad");
+				int edad = teclado2.nextInt();
+				System.out.println("Introduzca la salario");
+				double salario = teclado2.nextDouble();
+
+				listaEmpleados.add(new Empleado(nombre, edad, salario));
 				break;
 			case 2:
-				System.out.println("Has seleccionado la opcion 2");
+				// se borra por indice en un arraylist
+				Scanner teclado3 = new Scanner(System.in);
+				System.out.println("introduce la posicion");
+				int indice = teclado3.nextInt();
+				listaEmpleados.remove(indice);
 				break;
 			case 3:
-				Iterator<Empleado> miLista = listaEmpleados.iterator();
-
-				while (miLista.hasNext()) {
-					System.out.println(miLista.next().dameDatos());
-
+				for (Empleado e : listaEmpleados) {
+					System.out.println(e.dameDatos());
 				}
 				break;
 			case 4:
@@ -80,10 +90,10 @@ public class UsoEmpleado {
 }
 
 class Empleado {
-
-	static String nombre;
-	static int edad;
-	static double salario;
+//USAMOS ESTATIC PARA PODER ACCEDER A LAS VARIABLES DESDE CUALQUIER FICHERO
+	 String nombre;
+	 int edad;
+	 double salario;
 
 	public Empleado(String nombre, int edad, double salario) {
 
